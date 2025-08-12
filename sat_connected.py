@@ -32,11 +32,17 @@ def get_satellite_snr(port='/dev/ttyACM0', baud=9600):
     satellites_in_fix = set()
     sat_data = {}  # stores elevation, azimuth, snr per PRN
 
+    # All known GNSS talker prefixes
+    GSA_PREFIXES = ('$GPGSA', '$GLGSA', '$GNGSA', '$GAGSA',
+                    '$BDGSA', '$GBGSA', '$QZGSA', '$IRGSA', '$SBGSA')
+    GSV_PREFIXES = ('$GPGSV', '$GLGSV', '$GNGSV', '$GAGSV',
+                    '$BDGSV', '$GBGSV', '$QZGSV', '$IRGSV', '$SBGSV')
+
     for _ in range(100):
         line = ser.readline().decode(errors='ignore').strip()
-        if line.startswith(('$GPGSA', '$GLGSA', '$GNGSA', '$GAGSA')):
+        if line.startswith(GSA_PREFIXES):
             satellites_in_fix = parse_gsa(line)
-        elif line.startswith(('$GPGSV', '$GLGSV', '$GNGSV', '$GAGSV')):
+        elif line.startswith(GSV_PREFIXES):
             sat_data.update(parse_gsv(line))
         time.sleep(0.1)
 
