@@ -52,7 +52,6 @@ with open(csv_filename, mode="w", newline="") as csvfile:
                     gps_data['latitude'],
                     gps_data['longitude'],
                     gps_data['fix_quality'],
-                    fix_quality_text,
                     gps_data['num_satellites'],
                     prn, snr, elev, azim
                 ])
