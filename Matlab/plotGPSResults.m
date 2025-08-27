@@ -1,10 +1,12 @@
 close all 
 clear all 
 clc 
+set(0, 'DefaultLineLineWidth', 2);
+
 
 %----------------------- Indoor ---------------------------------%
 
-indoorfilename = '../MeasurementResults/gnss_log_20250812_152144 Indoor(Canteen).csv';
+indoorfilename = 'C:\Users\A103764\OneDrive - Singapore Institute Of Technology\Vignesh_OneDrive\GnssResults\MSP\MC2\Indoor\gnss_log_20250818_115817 Indoor(Marina South Pier)';
 T = readtable(indoorfilename, 'VariableNamingRule', 'preserve');
 
 % Convert timestamp
@@ -48,7 +50,7 @@ grid on;
 
 
 %------------------------ Outdoor -------------------------------------%
-outdoorfilename = '../MeasurementResults/gnss_log_20250812_153255 Outdoor(Canteen).csv';
+outdoorfilename = 'C:\Users\A103764\OneDrive - Singapore Institute Of Technology\Vignesh_OneDrive\GnssResults\MSP\MC2\Outdoor\gnss_log_20250818_121001 Outdoor(MSP).csv';
 T = readtable(outdoorfilename, 'VariableNamingRule', 'preserve');
 
 % Convert timestamp
